@@ -19,14 +19,13 @@ const QuestionsList = () => {
           <h1>Questions</h1>
           <div>
             {questions.map((question, index) => (
-              <div key={question.url}>
-                <QuestionsCard
-                  title={question.question}
-                  published_at={question.published_at}
-                  choices={questions[index].choices.length}
-                  url={question.url}
-                />
-              </div>
+              <QuestionsCard
+                key={question.url}
+                title={question.question}
+                published_at={question.published_at}
+                choices={questions[index].choices.length}
+                url={question.url}
+              />
             ))}
           </div>
         </>

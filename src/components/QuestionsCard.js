@@ -6,23 +6,21 @@ import { Link } from 'react-router-dom';
 const QuestionsCard = ({
   title, published_at, choices, url,
 }) => (
-  <article>
-    <Link to={`${url}`}>
-      <div>
-        <h2>{title}</h2>
-        <p>
-          Published on:
-          {' '}
-          {new Date(published_at).toDateString()}
-        </p>
-        <p>
-          {choices}
-          {' '}
-          Choices
-        </p>
-      </div>
-    </Link>
-  </article>
+  <Link to={`${url}`}>
+    <article>
+      <h2>{title}</h2>
+      <p>
+        Published on:
+        {' '}
+        {new Date(published_at).toDateString()}
+      </p>
+      <p>
+        {choices}
+        {' '}
+        Choices
+      </p>
+    </article>
+  </Link>
 );
 
 QuestionsCard.propTypes = {
