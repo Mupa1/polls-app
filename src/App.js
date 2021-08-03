@@ -6,14 +6,16 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import QuestionDetails from './components/QuestionDetails';
 import QuestionsList from './containers/QuestionsList';
 
 const App = () => (
   <BrowserRouter>
     <>
-      <Route path="/" render={() => <Redirect to="/questions" />} />
+      <Route exact path="/" render={() => <Redirect to="/questions" />} />
       <Switch>
-        <Route path="/questions" component={QuestionsList} />
+        <Route exact path="/questions" component={QuestionsList} />
+        <Route path="/questions/:questionId" component={QuestionDetails} />
       </Switch>
     </>
   </BrowserRouter>
