@@ -4,7 +4,7 @@ import * as action from '../redux/actions';
 
 const baseUrl = 'https://polls.apiblueprint.org';
 
-const getQuestions = () => async (dispatch) => {
+export const getQuestions = () => async (dispatch) => {
   try {
     const results = await axios.get(`${baseUrl}/questions`);
     dispatch(action.fetchQuestionsSuccess(results.data));
@@ -13,4 +13,11 @@ const getQuestions = () => async (dispatch) => {
   }
 };
 
-export default getQuestions;
+export const getQuestionDetails = (id) => async (dispatch) => {
+  try {
+    const results = await axios.get(`${baseUrl}/questions/${id}`);
+    dispatch(action.fetchQuestionSuccess(results.data));
+  } catch (error) {
+    dispatch(action.fetchQuestionFailure(error));
+  }
+};

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ProgressBar from '@ramonak/react-progress-bar';
 
+import { getQuestionDetails } from '../api';
+
 const QuestionDetails = (props) => {
-  const questions = useSelector((state) => state.questions.questions);
-
-  const [selectedQuestion, setSelectedQuestion] = useState('');
-  const { choices, question } = selectedQuestion;
-
-  const getQuestionDetails = (id) => (
-    questions.find((question) => question.url === `/questions/${id}`)
-  );
+  const dispatch = useDispatch();
+  const selectedQuestion = useSelector((state) => state.question.question);
+  const { question, choices } = selectedQuestion;
 
   useEffect(() => {
     const { questionId } = props.match.params;
 
-    setSelectedQuestion(getQuestionDetails(questionId));
+    dispatch(getQuestionDetails(questionId));
   }, []);
 
   const handleVotesPercentage = (choices, votes) => {
@@ -30,7 +27,6 @@ const QuestionDetails = (props) => {
     return percentage;
   };
 
-  console.log(selectedQuestion);
   return (
     <section className="details">
       {selectedQuestion && (
@@ -42,7 +38,7 @@ const QuestionDetails = (props) => {
           </h2>
 
           {choices.map((choice) => (
-            <div key={choice.url}>
+            <div key={choice.url} className="choices-card">
               <div>{choice.choice}</div>
               <div>
                 Votes:
