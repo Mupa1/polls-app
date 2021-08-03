@@ -16,14 +16,22 @@ const QuestionDetails = (props) => {
     dispatch(getQuestionDetails(questionId));
   }, []);
 
-  const handleVotesPercentage = (choices, votes) => {
+  const getVotesSum = (choices) => {
     const initialValue = 0;
     const sum = choices.reduce(
       (accumulator, currentValue) => accumulator + currentValue.votes,
       initialValue,
     );
+    return sum;
+  };
 
-    const percentage = ((votes / sum) * 100).toFixed(2);
+  const handleVotesPercentage = (choices, votes) => {
+    let percentage = 0;
+    if (votes > 0) {
+      percentage = ((votes / getVotesSum(choices)) * 100).toFixed(2);
+    } else {
+      percentage = (0).toFixed(2);
+    }
     return percentage;
   };
 
