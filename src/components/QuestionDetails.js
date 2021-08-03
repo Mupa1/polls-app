@@ -38,19 +38,19 @@ const QuestionDetails = (props) => {
           </h2>
 
           {choices.map((choice) => (
-            <div key={choice.url} className="choices-card">
-              <div>{choice.choice}</div>
-              <div>
+            <div key={choice.url} className="details-choice-card">
+              <h3 className="details-info detail-choice">{choice.choice}</h3>
+              <div className="details-info">
                 Votes:
                 {' '}
                 {choice.votes}
               </div>
-              <div>
+              <div className="details-info">
                 {handleVotesPercentage(choices, choice.votes)}
                 {' '}
                 %
               </div>
-              <div>
+              <div className="details-info">
                 <ProgressBar
                   completed={handleVotesPercentage(choices, choice.votes)}
                   isLabelVisible={false}

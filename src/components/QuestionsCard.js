@@ -7,9 +7,9 @@ const QuestionsCard = ({
   title, published_at, choices, url,
 }) => (
   <Link to={`${url}`}>
-    <article>
-      <h2>{title}</h2>
-      <p>
+    <article className="question-card">
+      <h2 className="title">{title}</h2>
+      <p className="published-on">
         Published on:
         {' '}
         {new Date(published_at).toDateString()}
