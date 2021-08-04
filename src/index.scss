@@ -3,6 +3,8 @@ $border: 1px solid #ccc;
 $width-100: 100%;
 $breakpoint-small: 480px;
 $text-left: left;
+$purple: #6a1b9a;
+$main-color: $purple;
 
 * {
   box-sizing: border-box;
@@ -64,7 +66,7 @@ code {
 
   .title {
     font-size: 120%;
-    color: #6a1b9a;
+    color: $main-color;
   }
 
   .published-on {
@@ -97,6 +99,10 @@ code {
   width: $width-100;
   cursor: pointer;
 
+  &:hover {
+    border-bottom: 1px solid $main-color;
+  }
+
   @media (min-width: $breakpoint-small) {
     display: flex;
     justify-content: space-between;
@@ -112,5 +118,21 @@ code {
 
   .detail-choice {
     margin: 0;
+  }
+}
+
+.details-buttons {
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+.details-save-vote {
+  background-color: $main-color;
+  color: #ccc;
+
+  &:hover {
+    color: $main-color;
+    background-color: #ccc;
   }
 }

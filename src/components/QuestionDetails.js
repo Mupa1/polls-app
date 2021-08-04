@@ -100,8 +100,8 @@ const QuestionDetails = ({ match, history }) => {
             </div>
           ))}
           <div>
-            <button type="button" onClick={handleBack}>Back</button>
-            <button type="submit" onClick={handleSaveVote}>Save vote</button>
+            <button type="button" className="details-buttons" onClick={handleBack}>Back</button>
+            <button type="submit" className="details-buttons details-save-vote" onClick={handleSaveVote}>Save vote</button>
           </div>
         </>
       )}
