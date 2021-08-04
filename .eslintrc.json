@@ -35,6 +35,8 @@
   },
   "ignorePatterns": [
     "dist/",
-    "build/"
+    "build/",
+    "service-worker.js",
+    "serviceWorkerRegistration.js"
   ]
 }
