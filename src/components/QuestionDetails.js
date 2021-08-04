@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import ProgressBar from '@ramonak/react-progress-bar';
 
-import { getQuestionDetails } from '../api';
+import { getQuestionDetails, voteOnAChoice } from '../api';
 
-const QuestionDetails = (props) => {
+const QuestionDetails = ({ match, history }) => {
   const dispatch = useDispatch();
   const selectedQuestion = useSelector((state) => state.question.question);
   const { question, choices } = selectedQuestion;
 
+  const initialState = {
+    choice: '',
+    votes: '',
+    url: '',
+  };
+  const [values, setValues] = useState(initialState);
+
   useEffect(() => {
-    const { questionId } = props.match.params;
+    const { questionId } = match.params;
 
     dispatch(getQuestionDetails(questionId));
   }, []);
@@ -35,6 +42,25 @@ const QuestionDetails = (props) => {
     return percentage;
   };
 
+  const handleChoiceClick = (choices) => {
+    setValues({
+      choice: choices.choice,
+      votes: choices.votes + 1,
+      url: choices.url,
+    });
+  };
+
+  const handleBack = () => (
+    history.push('/')
+  );
+
+  const handleSaveVote = (e) => {
+    e.preventDefault();
+
+    dispatch(voteOnAChoice(values));
+    handleBack();
+  };
+
   return (
     <section className="details">
       {selectedQuestion && (
@@ -46,7 +72,14 @@ const QuestionDetails = (props) => {
           </h2>
 
           {choices.map((choice) => (
-            <div key={choice.url} className="details-choice-card">
+            <div
+              key={choice.url}
+              role="button"
+              tabIndex={0}
+              className="details-choice-card"
+              onClick={() => handleChoiceClick(choice)}
+              onKeyDown={() => handleChoiceClick(choice)}
+            >
               <h3 className="details-info detail-choice">{choice.choice}</h3>
               <div className="details-info">
                 Votes:
@@ -66,6 +99,10 @@ const QuestionDetails = (props) => {
               </div>
             </div>
           ))}
+          <div>
+            <button type="button" onClick={handleBack}>Back</button>
+            <button type="submit" onClick={handleSaveVote}>Save vote</button>
+          </div>
         </>
       )}
     </section>
@@ -76,7 +113,11 @@ QuestionDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       questionId: PropTypes.string,
+      choiceId: PropTypes.string,
     }),
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }).isRequired,
 };
 

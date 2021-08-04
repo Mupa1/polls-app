@@ -95,6 +95,7 @@ code {
   margin: 20px auto;
   text-align: $text-left;
   width: $width-100;
+  cursor: pointer;
 
   @media (min-width: $breakpoint-small) {
     display: flex;

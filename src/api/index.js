@@ -21,3 +21,19 @@ export const getQuestionDetails = (id) => async (dispatch) => {
     dispatch(action.fetchQuestionFailure(error));
   }
 };
+
+export const voteOnAChoice = (choice) => async (dispatch) => {
+  try {
+    const data = await axios.post(`${baseUrl}${choice.url}`,
+      {
+        vote: {
+          choice: choice.choice,
+          votes: choice.votes,
+          url: choice.url,
+        },
+      });
+    dispatch(action.voteSuccess(data.vote));
+  } catch (error) {
+    dispatch(action.voteFailure(error));
+  }
+};
