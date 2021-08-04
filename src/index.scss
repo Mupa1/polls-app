@@ -1,0 +1,138 @@
+$padding-20: 20px;
+$border: 1px solid #ccc;
+$width-100: 100%;
+$breakpoint-small: 480px;
+$text-left: left;
+$purple: #6a1b9a;
+$main-color: $purple;
+
+* {
+  box-sizing: border-box;
+  color: #555;
+}
+
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  margin: auto;
+  padding: $padding-20;
+}
+
+a {
+  text-decoration: none;
+  color: #555;
+}
+
+code {
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
+    monospace;
+}
+
+/* Question Card */
+
+.question-card {
+  border: $border;
+  height: 180px;
+  padding: $padding-20;
+  margin: 20px auto;
+  text-align: $text-left;
+  width: $width-100;
+
+  @media (min-width: $breakpoint-small) {
+    max-width: 280px;
+    min-width: 280px;
+    margin: 10px;
+  }
+
+  .title {
+    font-size: 120%;
+    color: $main-color;
+  }
+
+  .published-on {
+    font-size: 90%;
+    font-style: italic;
+  }
+}
+
+/* Questions List */
+
+.questions-list-view {
+  width: calc(100vw - 40px);
+
+  .questions-list-container {
+    @media (min-width: $breakpoint-small) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
+
+/* Question Details Views */
+
+.details-choice-card {
+  border: $border;
+  padding: $padding-20;
+  margin: 20px auto;
+  text-align: $text-left;
+  width: $width-100;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom: 1px solid $main-color;
+  }
+
+  @media (min-width: $breakpoint-small) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .details-info {
+    padding-bottom: 10px;
+
+    @media (min-width: $breakpoint-small) {
+      width: 25%;
+    }
+  }
+
+  .detail-choice {
+    margin: 0;
+  }
+}
+
+.details-buttons {
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+.details-save-vote {
+  background-color: $main-color;
+  color: #ccc;
+
+  &:hover {
+    color: $main-color;
+    background-color: #ccc;
+  }
+}
