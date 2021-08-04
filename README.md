@@ -15,6 +15,8 @@ A single page application that lets users vote through the Polls API. Built usin
 - React-Create-App
 - SCSS
 - ES6
+- Jest
+- Enzyme
 - [Polls API](https://pollsapi.docs.apiary.io/)
 
 ## Getting Started
