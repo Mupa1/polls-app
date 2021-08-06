@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionsList component matches snapshot 1`] = `
+<section
+  className="questions-list-view"
+>
+  <div>
+    Loading questions ...
+  </div>
+</section>
+`;

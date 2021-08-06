@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionsCard component matches snapshot 1`] = `
+<a
+  href="/questions/34"
+  onClick={[Function]}
+>
+  <article
+    className="question-card"
+  >
+    <h2
+      className="title"
+    >
+      Favourite programming language?
+    </h2>
+    <p
+      className="published-on"
+    >
+      Published on:
+       
+      Fri Jul 30 2021
+    </p>
+    <p>
+      7
+       
+      Choices
+    </p>
+  </article>
+</a>
+`;

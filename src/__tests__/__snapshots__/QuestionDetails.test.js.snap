@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionDetails component matches snapshot 1`] = `
+<section
+  className="details"
+>
+  
+</section>
+`;

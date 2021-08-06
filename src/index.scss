@@ -103,6 +103,10 @@ code {
     border-bottom: 1px solid $main-color;
   }
 
+  &:focus {
+    background-color: #ccc;
+  }
+
   @media (min-width: $breakpoint-small) {
     display: flex;
     justify-content: space-between;
